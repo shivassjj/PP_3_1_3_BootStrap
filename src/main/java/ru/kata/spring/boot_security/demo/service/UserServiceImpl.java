@@ -23,13 +23,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    @Transactional
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
     @Override
-    @Transactional
     public List<User> findAllUsers() {
         return userRepository.findAll();
     }
@@ -42,7 +40,6 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    @Transactional
     public User findByIdUsers(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("Пользователь не найден"));
     }
