@@ -12,7 +12,8 @@
         <div class="col-11">
                     <span class="nav navbar-text text-white fs-4">
                         <strong><th:block th:text="${logUser.getEmail}"></th:block></strong>
-                        &nbsp;<th:block th:text="'with roles: '+ ${logUser.getRolesString()}"></th:block>
+                        &nbsp;<nobr>with roles:</nobr>
+                        &nbsp;<th:block th:each="role : ${logUser.getRoles()}" th:text="${role.getStringRole()} + ' '"></th:block>
                     </span>
         </div>
         <div class="col-1">

@@ -13,7 +13,7 @@
                     <span class="nav navbar-text text-white fs-4">
                         <strong><th:block th:text="${logUser.getEmail()}"></th:block></strong>
                         &nbsp;<nobr>with roles:</nobr>
-                        &nbsp;<th:block th:each="role : ${logUser.getRolesString()}" th:text="${role}"></th:block>
+                        &nbsp;<th:block th:each="role : ${logUser.getRoles()}" th:text="${role.getStringRole()} + ' '"></th:block>
                     </span>
         </div>
         <div class="col-1">
@@ -78,7 +78,9 @@
                             <td th:text="${user.getLastName()}"></td>
                             <td th:text="${user.getAge()}"></td>
                             <td th:text="${user.getEmail()}"></td>
-                            <td th:text="${user.getRolesString()}"></td>
+                            <td>
+                                <nobr th:each="role : ${user.getRoles()}" th:text="${role.getStringRole()} + ' '"> </nobr>
+                            </td>
                             <td>
                                 <button type="button" class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#editModal"
                                         th:attrappend="data-bs-target=${user.id}">
