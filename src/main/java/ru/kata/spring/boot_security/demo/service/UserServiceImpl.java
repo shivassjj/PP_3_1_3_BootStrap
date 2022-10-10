@@ -22,30 +22,36 @@ public class UserServiceImpl implements UserService{
         this.roleService = roleService;
     }
 
+    @Override
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
+    @Override
     public List<User> findAllUsers() {
         return userRepository.findAll();
     }
 
+    @Override
     @Transactional
     public void saveUser(User user) {
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         userRepository.save(user);
     }
 
+    @Override
     public User findByIdUsers(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("Пользователь не найден"));
     }
 
+    @Override
     @Transactional
     public void updateUser(Long id, User user) {
         user.setId(id);
         userRepository.save(user);
     }
 
+    @Override
     @Transactional
     public void deleteByIdUsers(Long id) {
         userRepository.deleteById(id);
